@@ -30,6 +30,20 @@
     <button class="btn__translate-eng">Translate English(.btn__translate-eng)</button>
 
     <p>You can try that tag translation process by using selectors of buttons...</p>
+    <p>Im using such a function for translating page tag's innerText:
+    <pre>
+    const changeLanguage = function () {
+     const languageSet = sessionStorage.getItem("languageChosen") === "UK" ? 1 : 0;
+
+        for (let key in translationDataBase) { //translationDataBase is JSON object variable, where all selectors are
+            const element = document.querySelector(key);
+            if (element !== null) {
+                element.textContent = translationDataBase[key][languageSet];
+            } else console.error(`There is no such selector ${key} in ur document...`);
+        }
+    };
+        </pre>
+    </p>
     <script src="js/index.js"></script>
 
 </body>

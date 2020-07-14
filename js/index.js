@@ -7,8 +7,16 @@
   const ukrText = document.querySelector('textarea[name="UkrainianText"]');
 
   document
-    .querySelector(".btn__translate")
+    .querySelector(".btn__translate-ukr")
     .addEventListener("click", function () {
+      sessionStorage.setItem("languageChosen", "UK");
+      changeLanguage();
+    });
+
+  document
+    .querySelector(".btn__translate-eng")
+    .addEventListener("click", function () {
+      sessionStorage.setItem("languageChosen", "EN");
       changeLanguage();
     });
 
@@ -33,17 +41,16 @@
     }
   });
 
-  sessionStorage.setItem("languageChosen", "UA");
-
   const changeLanguage = function () {
     const languageSet =
-      sessionStorage.getItem("languageChosen") === "UA" ? 1 : 0;
+      sessionStorage.getItem("languageChosen") === "UK" ? 1 : 0;
 
     for (let key in translationDataBase) {
       const element = document.querySelector(key);
       if (element !== null) {
         element.textContent = translationDataBase[key][languageSet];
-      } else console.error("There is no such selector in ur document...");
+      } else
+        console.error(`There is no such selector ${key} in ur document...`);
     }
   };
 })();
