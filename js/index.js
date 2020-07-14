@@ -1,5 +1,4 @@
 (function () {
-  "use strict";
   const translationDataBase = {};
 
   const addButton = document.querySelector(".btn__add");
@@ -13,6 +12,18 @@
       changeLanguage();
     });
 
+  document.querySelector(".btn__show").addEventListener("click", function () {
+    const display = document.querySelector(".display");
+    display.style.display = "block";
+
+    display.innerText = "{";
+    for (let key in translationDataBase) {
+      display.innerText += `\n"${key}":["${translationDataBase[key][0]}", "${translationDataBase[key][1]}"],\n`;
+    }
+    display.innerText += "}";
+    display.innerText = display.innerText.replace(",\n}", "\n}");
+  });
+
   addButton.addEventListener("click", function () {
     if (selectorField.value !== "") {
       translationDataBase[selectorField.value] = [];
@@ -22,14 +33,6 @@
     }
   });
 
-  //   const languagesForPage = {
-  //   "a[href='#about']": ["ABOUT US", "ПРО НАС"],
-  //   "a[href='#focus']": ["OUR FOCUS", "ФОКУС"],
-  //   "a[href='#team']": ["OUR TEAM", "КОМАНДА"],
-  //   "a[href='#worksteps']": ["WORK STEPS", "КРОКИ"],
-  //   "a[href='#select']": ["WHY CHOOSE US", "ОБРАТИ НАС"],
-  //   "a[href='#order']": ["GET IN TOUCH", "ЗАМОВИТИ"],
-  // };
   sessionStorage.setItem("languageChosen", "UA");
 
   const changeLanguage = function () {
@@ -37,8 +40,10 @@
       sessionStorage.getItem("languageChosen") === "UA" ? 1 : 0;
 
     for (let key in translationDataBase) {
-      document.querySelector(key).textContent =
-        translationDataBase[key][languageSet];
+      const element = document.querySelector(key);
+      if (element !== null) {
+        element.textContent = translationDataBase[key][languageSet];
+      } else console.error("There is no such selector in ur document...");
     }
   };
 })();

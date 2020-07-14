@@ -1,0 +1,8 @@
+.display {
+  max-height: 300px;
+  overflow: scroll;
+  display: none;
+}
+button {
+  margin: 5px auto;
+}

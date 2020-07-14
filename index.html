@@ -4,10 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/index.css">
     <title>Page Translator</title>
 </head>
 
 <body>
+    <h1>PAGE TRANSLATING ASSISTANT(h1)</h1>
+
+    <p class="display"></p>
     <form>
         <label>Enter your tag selector
             <input name="selectorName" type="text" placeholder="CSS selector here">
@@ -18,10 +22,16 @@
 
 
     </form>
-    <button class="btn__add">Add to JSON</button>
+    <button class="btn__add">Add to JSON(.btn__add)</button>
     <br>
-    <button class="btn__translate">Translate</button>
+    <button class="btn__show">Show my JSON(.btn__show)</button><br>
+    <button class="btn__translate-ukr">Translate Ukrainian(.btn__translate-ukr)</button>
+    <br>
+    <button class="btn__translate-eng">Translate English(.btn__translate-eng)</button>
+
+    <p>You can try that tag translation process by using selectors of buttons...</p>
     <script src="js/index.js"></script>
+
 </body>
 
 </html>
